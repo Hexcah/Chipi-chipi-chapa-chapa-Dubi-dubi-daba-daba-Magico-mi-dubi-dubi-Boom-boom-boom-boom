@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chipi chipi chapa chapa Dubi dubi daba daba</title>
+    <style>
+        body, html {
+          margin: 0;
+          padding: 0;
+          height: 100%;
+          overflow: hidden;
+        }
+        #videoPlayer {
+          width: 100%;
+          height: 100%;
+        }
+    </style>
+</head>
+<body onclick="playVideo()">
+<video id="videoPlayer">
+    <source src="/video" type="video/mp4">
+    Your browser is not cool enough to chipi chipi chapa chapa dubi dubi daba daba :(
+</video>
+
+<script>
+    function playVideo() {
+        const video = document.getElementById('videoPlayer');
+        video.muted = false; // Unmute
+        video.play().then(_ => {
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.webkitRequestFullscreen) {
+                video.webkitRequestFullscreen();
+            } else if (video.mozRequestFullScreen) {
+                video.mozRequestFullScreen();
+            }
+        }).catch(error => {
+            // Autoplay was prevented, handle the error here
+        });
+    }
+</script>
+</body>
+</html>
