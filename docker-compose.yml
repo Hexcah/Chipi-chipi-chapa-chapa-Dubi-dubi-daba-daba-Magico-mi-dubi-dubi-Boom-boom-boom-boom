@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  chipi-chipi:
+    image: chipi-chipi:latest
+    container_name: chipi-chipi
+    environment:
+      - TZ="Europe/Paris"
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.chipi-chipi.rule=(Host(`hexca.fr`)
+      - traefik.http.routers.chipi-chipi.tls=true
+      - traefik.http.routers.chipi-chipi.tls.certresolver=myresolver
+      - traefik.http.services.chipi-chipi.loadbalancer.server.port=8000
